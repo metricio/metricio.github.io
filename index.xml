@@ -31,6 +31,16 @@ Usage import BuildStatusWidget from &#39;../widgets/build-status/widget&#39;;  &
     </item>
     
     <item>
+      <title>CircleCI</title>
+      <link>/recipes/circleci/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/recipes/circleci/</guid>
+      <description>Below is a basic example of a job to get your build status from CircleCI and then how to integrate the build status widget into your dashboard using the result from the job.
+Job import request from &#39;request-promise-native&#39;; // Helper method to fetch a status for a branch function getBranch(repo, branch, limit = 10) { const githubUser = &#39;GITHUB_ORG_OR_USER&#39;; const endpoint = &#39;https://circleci.com/api/v1.1/project/github&#39;; const options = { uri: `${endpoint}/${githubUser}/${repo}/tree/${branch}`, qs: { &#39;circle-token&#39;: &#39;SECRET_CIRCLE_CI_TOKEN&#39;, offset: 0, limit, }, headers: { &#39;User-Agent&#39;: &#39;Metrician - CircleCI&#39;, }, json: true, }; return request(options); } // Define our interval e.</description>
+    </item>
+    
+    <item>
       <title>Number</title>
       <link>/widgets/number/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -50,11 +50,19 @@
   </url>
   
   <url>
+    <loc>/recipes/circleci/</loc>
+  </url>
+  
+  <url>
     <loc>/widgets/number/</loc>
   </url>
   
   <url>
     <loc>/widgets/ping/</loc>
+  </url>
+  
+  <url>
+    <loc>/recipes/</loc>
   </url>
   
   <url>

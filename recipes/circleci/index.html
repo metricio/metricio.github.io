@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.30.2" />
 
-<title>Customisation :: Metricio - Dashboards for teams built with React and Node</title>
+<title>CircleCI :: Metricio - Dashboards for teams built with React and Node</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
 <link href="/css/font-awesome.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 
     
   </head>
-  <body data-url="/customisation/">
+  <body data-url="/recipes/circleci/">
     
       <div id="headermain"></div>
 <nav id="sidebar" class="">
@@ -65,7 +65,7 @@
         <span>Getting started</span>
       </a>
     </li>
-    <li data-nav-id="/customisation/" class="dd-item parent active">
+    <li data-nav-id="/customisation/" class="dd-item">
       <a href="/customisation/">
         <span>Customisation</span>
       </a>
@@ -129,12 +129,13 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/recipes/" class="dd-item">
+    <li data-nav-id="/recipes/" class="dd-item parent">
       <a href="/recipes/">
-        <span>Recipes</span><i class="fa fa-angle-right fa-lg category-icon"></i>
+        <span>Recipes</span>
+            <i class="fa fa-angle-down fa-lg category-icon"></i>
       </a>
         <ul>
-      <li data-nav-id="/recipes/circleci/" class="dd-item">
+      <li data-nav-id="/recipes/circleci/" class="dd-item active">
         <a href="/recipes/circleci/">
           <span>CircleCI</span>
         </a>
@@ -166,7 +167,7 @@
       
       
     <div id="top-github-link">
-      <a class="github-link" href="https://github.com/metricio/metricio-docs/blob/master/content/customisation/_index.md" target="blank">
+      <a class="github-link" href="https://github.com/metricio/metricio-docs/blob/master/content/recipes/circleci.md" target="blank">
         <i class="fa fa-code-fork"></i>
         Edit page
       </a>
@@ -183,7 +184,12 @@
 
 
 
- <a href='/'>Home</a> > Customisation
+
+
+
+ <a href='/'>Home</a> > <a href='/recipes/'>Recipes</a> > CircleCI
+
+ 
 
  
 
@@ -194,7 +200,18 @@
     
     <div class="progress">
         <div class="wrapper">
-    
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#job">Job</a></li>
+<li><a href="#dashboard">Dashboard</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
         </div>
     </div>
     
@@ -204,7 +221,7 @@
 
 <div id="body-inner">
   
-    <h1>Customisation</h1>
+    <h1>CircleCI</h1>
   
 
 
@@ -212,37 +229,81 @@
     
     
     
+    
 
-<p>Everything you need can be found in <a href="https://github.com/metricio/metricio/blob/master/src">src</a>. Just open up each folder with your text editor and make your changes.</p>
+<p>Below is a basic example of a job to get your build status from CircleCI and then how to integrate the build status widget into your dashboard using the result from the job.</p>
 
-<p>If you aren&rsquo;t to familiar with React, Node.js or SCSS you should still be able to find your way around. The current widgets, dashboards and jobs use very simple and easy to understand patterns.  But if you get stuck, just raise an issue in the Github project.</p>
+<h3 id="job">Job</h3>
 
-<table>
-<thead>
-<tr>
-<th align="left"><strong>Path</strong></th>
-<th align="left"><strong>Description</strong></th>
-</tr>
-</thead>
+<pre><code class="language-javascript">import request from 'request-promise-native';
 
-<tbody>
-<tr>
-<td align="left"><strong>/src/dashboards/</strong></td>
-<td align="left">Where all dashboards should be created. A <a href="https://github.com/metricio/metricio/blob/master/src/dashboards/index.jsx">default</a> dashboard is already available as an example. See <a href="/dashboards">dashboards</a> for more infomation.</td>
-</tr>
+// Helper method to fetch a status for a branch
+function getBranch(repo, branch, limit = 10) {
+  const githubUser = 'GITHUB_ORG_OR_USER';
+  const endpoint = 'https://circleci.com/api/v1.1/project/github';
+  const options = {
+    uri: `${endpoint}/${githubUser}/${repo}/tree/${branch}`,
+    qs: {
+      'circle-token': 'SECRET_CIRCLE_CI_TOKEN',
+      offset: 0,
+      limit,
+    },
+    headers: {
+      'User-Agent': 'Metrician - CircleCI',
+    },
+    json: true,
+  };
+  return request(options);
+}
 
-<tr>
-<td align="left"><strong>/src/widgets/</strong></td>
-<td align="left">Contains all currently available widgets. You can create your own or use the <a href="https://github.com/metricio/metricio/blob/master/src/widgets">existing</a> ones. See <a href="/widgets">widgets</a> for more infomation.</td>
-</tr>
+// Define our interval e.g. https://crontab.guru
+export const interval = '*/2 * * * *';
 
-<tr>
-<td align="left"><strong>/src/jobs/</strong></td>
-<td align="left">Contains all currently available jobs. You should create your own but feel free to use the <a href="https://github.com/metricio/metricio/blob/master/src/jobs">existing</a> ones as a template.  See <a href="/jobs">jobs</a> for more infomation.</td>
-</tr>
-</tbody>
-</table>
+// Define our jobs function
+export const perform = async () =&gt; {
 
+  // Resolve promise for develop
+  const develop = await getBranch('YOUR_REPO`', 'develop');
+
+  // Resolve promise for master
+  const master = await getBranch('YOUR_REPO', 'master');
+
+  return [
+    {
+      target: 'BuildDevelop',
+      data: {
+        outcome: develop[0].outcome === null ? 'pending' : develop[0].outcome,
+      },
+    },
+    {
+      target: 'BuildMaster',
+      data: {
+        outcome: master[0].outcome === null ? 'pending' : master[0].outcome,
+      },
+    },
+  ];
+};
+</code></pre>
+
+<h3 id="dashboard">Dashboard</h3>
+
+<pre><code class="language-javascript">  import BuildStatusWidget from '../widgets/build-status/widget';
+</code></pre>
+
+<pre><code class="language-html">&lt;BuildStatusWidget socket={socket}
+  name=&quot;BuildDevelop&quot;
+  title=&quot;Build - Develop&quot;
+  size=&quot;medium&quot;
+/&gt;
+
+&lt;BuildStatusWidget socket={socket}
+  name=&quot;BuildMaster&quot;
+  title=&quot;Build - Master&quot;
+  size=&quot;medium&quot;
+/&gt;
+</code></pre>
+
+<p>Now everytime the above job completes successfully, widgets <strong>BuildMaster</strong> and <strong>BuildDevelop</strong> will get updated with the latest build outcome.</p>
 
 
     
@@ -254,8 +315,8 @@
 </div>
 
 <div id="navigation">
-<a class="nav nav-prev" href="/getting-started/" title="Getting started"> <i class="fa fa-chevron-left"></i></a>
-    <a class="nav nav-next" href="/dashboards/" title="Dashboards" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/recipes/" title="Recipes"> <i class="fa fa-chevron-left"></i></a>
+    <a class="nav nav-next" href="/getting-started/" title="Getting started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
 
 </section>
 <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
