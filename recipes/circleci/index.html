@@ -38,10 +38,13 @@
 <div class="highlightable">
   <div id="header-wrapper">
     <div id="header">
-		 
-		<p><img src="https://res.cloudinary.com/metricio/image/upload/v1508691520/logo-white_iop3bn.png" alt="Metricio" /></p>
- 
-		
+      
+	
+  
+    <p><img src="https://res.cloudinary.com/metricio/image/upload/v1508691520/logo-white_iop3bn.png" alt="Metricio" /></p>
+
+  
+
     </div>
         <div class="searchbox">
 		    <label for="search-by"><i class="fa fa-search"></i></label>
@@ -60,7 +63,7 @@
             <li data-nav-id="/" class="dd-item">
             <a href="/"><i class="fa fa-fw fa-home"></i></a>
             </li>
-    <li data-nav-id="/getting-started/" class="dd-item parent">
+    <li data-nav-id="/getting-started/" class="dd-item alwaysopen">
       <a href="/getting-started/">
         <span>Getting started</span>
       </a>
@@ -140,6 +143,11 @@
           <span>CircleCI</span>
         </a>
     </li>
+      <li data-nav-id="/recipes/ping/" class="dd-item">
+        <a href="/recipes/ping/">
+          <span>Ping</span>
+        </a>
+    </li>
         </ul>
     </li>
 
@@ -148,6 +156,10 @@
         <section id="shortcuts">
                 <li class="" role=""><h3>More</h3><a href="https://github.com/metricio/metricio" target="_blank" rel="noopener"><i class='fa fa-github'></i>&nbsp;&nbsp;View on Github</a></li>
         </section>
+
+		<hr />
+
+
     </ul>
 
  <section id="footer">
@@ -231,7 +243,7 @@
     
     
 
-<p>Below is a basic example of a job to get your build status from CircleCI and then how to integrate the build status widget into your dashboard using the result from the job.</p>
+<p>Below is a basic example of a job to get your build status from CircleCI and then how to integrate the <a href="/widgets/build-status/">build status</a> widget into your dashboard using the result from the job.</p>
 
 <h3 id="job">Job</h3>
 
@@ -316,7 +328,7 @@ export const perform = async () =&gt; {
 
 <div id="navigation">
 <a class="nav nav-prev" href="/recipes/" title="Recipes"> <i class="fa fa-chevron-left"></i></a>
-    <a class="nav nav-next" href="/getting-started/" title="Getting started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="/recipes/ping/" title="Ping" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
 
 </section>
 <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">

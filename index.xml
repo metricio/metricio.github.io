@@ -52,6 +52,16 @@ Usage import NumberWidget from &#39;../widgets/number/widget&#39;;  &amp;lt;Numb
     
     <item>
       <title>Ping</title>
+      <link>/recipes/ping/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/recipes/ping/</guid>
+      <description>Below is a basic example of a job that gets a ping response time from a URL or endpoint and also how to integrate the ping widget into your dashboard using the result from the job.
+Job import request from &#39;request-promise-native&#39;; const options = { resolveWithFullResponse: true, time: true, timeout: 5000, headers: { &#39;User-Agent&#39;: &#39;Metricio - Ping Example&#39;, }, }; export const interval = &#39;* * * * *&#39;; export const perform = async () =&amp;gt; { const google = await request(Object.</description>
+    </item>
+    
+    <item>
+      <title>Ping</title>
       <link>/widgets/ping/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

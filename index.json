@@ -91,6 +91,13 @@
 	"content": " The number widget can be found at src/widgets/number/widget.jsx. Because the number widget is the most commonly used widget, the background colours are randomised to keep the dashboards unique. So don\u0026rsquo;t be surpised if you see them change colour.\nUsage import NumberWidget from '../widgets/number/widget';  \u0026lt;NumberWidget socket={socket} name=\u0026quot;MyCatWidget\u0026quot; title=\u0026quot;Catz Conversion\u0026quot; metric=\u0026quot;%\u0026quot; format=\u0026quot;0.0a\u0026quot; /\u0026gt;  Props    Prop Description Required     socket Socket that widget should use for updates Yes   name Name of widget. Used to update the widget when a job completes Yes   title Title of widget. Usually displayed above the metric value Yes   metric Metric to use for value passed to widget e.g. % Optional   format How to format the widget value. See Numeral docs. Optional   size Size of the widget: small (default) or medium can be used Optional    Data Stucture When building a job for a number widget, a single value should be used e.g.\ndata: { value: 24 };  Example "
 },
 {
+	"uri": "/recipes/ping/",
+	"title": "Ping",
+	"tags": [],
+	"description": "",
+	"content": " Below is a basic example of a job that gets a ping response time from a URL or endpoint and also how to integrate the ping widget into your dashboard using the result from the job.\nJob import request from 'request-promise-native'; const options = { resolveWithFullResponse: true, time: true, timeout: 5000, headers: { 'User-Agent': 'Metricio - Ping Example', }, }; export const interval = '* * * * *'; export const perform = async () =\u0026gt; { const google = await request(Object.assign(options, { uri: 'https://www.google.com' })); const reddit = await request(Object.assign(options, { uri: 'https://www.reddit.com/' })); return [ { target: 'GooglePing', data: { status: google.statusCode, time: google.elapsedTime, }, }, { target: 'RedditPing', data: { status: reddit.statusCode, time: reddit.elapsedTime, }, }, ]; };  Dashboard import PingWidget from '../widgets/ping/widget';  \u0026lt;Ping socket={socket} name=\u0026quot;GooglePing\u0026quot; title=\u0026quot;Google\u0026quot; /\u0026gt; \u0026lt;Ping socket={socket} name=\u0026quot;RedditPing\u0026quot; title=\u0026quot;Reddit\u0026quot; /\u0026gt;  Now everytime the above job completes successfully, widgets GooglePing and RedditPing will get updated with the ping response times.\n"
+},
+{
 	"uri": "/widgets/ping/",
 	"title": "Ping",
 	"tags": [],
@@ -102,7 +109,7 @@
 	"title": "Recipes",
 	"tags": [],
 	"description": "",
-	"content": "  CircleCI  "
+	"content": "  CircleCI Ping  "
 },
 {
 	"uri": "/raspberry-pi/setup/",

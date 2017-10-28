@@ -58,6 +58,10 @@
   </url>
   
   <url>
+    <loc>/recipes/ping/</loc>
+  </url>
+  
+  <url>
     <loc>/widgets/ping/</loc>
   </url>
   
