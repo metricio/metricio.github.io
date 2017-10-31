@@ -46,7 +46,7 @@ Job import request from &#39;request-promise-native&#39;; // Helper method to fe
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/widgets/number/</guid>
-      <description>The number widget can be found at src/widgets/number/widget.jsx. Because the number widget is the most commonly used widget, the background colours are randomised to keep the dashboards unique. So don&amp;rsquo;t be surpised if you see them change colour.
+      <description>The number widget can be found at src/widgets/number/widget.jsx. Because the number widget is the most commonly used widget, the background colours are randomised to keep the dashboards unique. So don&amp;rsquo;t be surprised if you see them change colour.
 Usage import NumberWidget from &#39;../widgets/number/widget&#39;;  &amp;lt;NumberWidget socket={socket} name=&amp;quot;MyCatWidget&amp;quot; title=&amp;quot;Catz Conversion&amp;quot; metric=&amp;quot;%&amp;quot; format=&amp;quot;0.0a&amp;quot; /&amp;gt;  Props    Prop Description Required     socket Socket that widget should use for updates Yes   name Name of widget.</description>
     </item>
     
@@ -66,7 +66,7 @@ Job import request from &#39;request-promise-native&#39;; const options = { reso
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/widgets/ping/</guid>
-      <description>The ping widget is used to display the outcome of a request to an API endpoint or website and report whether the response was a 200 and how long it took to get that response. If the response was 200 then the widget will remain orange. However, if the response is anything other than 200 the widget will be red.
+      <description>The ping widget is used to display the outcome of a request to an API endpoint or website and report whether the response was a 200 and how long it took to get that response. If the response was 200, then the widget will remain orange. However, if the response is anything other than 200 the widget will be red.
 Usage import PingWidget from &#39;../widgets/ping/widget&#39;;  &amp;lt;PingWidget socket={socket} name=&amp;quot;GooglePing&amp;quot; title=&amp;quot;Google&amp;quot; /&amp;gt;  Props    Prop Description Required     socket Socket that widget should use for updates Yes   name Name of widget.</description>
     </item>
     
@@ -86,7 +86,7 @@ Step 2: Configure Raspbian Once booted up and on the desktop of Raspbian, we nee
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/widgets/sparkline/</guid>
-      <description>The sparkline widget is to help quickly visualize the history of a metric. The widget plots all supplied values on a sparkline line chart as best as it can. The last value supplied will be assumed as the most up to date value to display.
+      <description>The sparkline widget is to help quickly visualise the history of a metric. The widget plots all supplied values on a sparkline line chart as best as it can. The last value provided will be assumed as the most up to date value to display.
 Usage import SparklineWidget from &#39;../widgets/sparkline/widget&#39;;  &amp;lt;SparklineWidget socket={socket} name=&amp;quot;DemoUsers&amp;quot; title=&amp;quot;Users&amp;quot; format=&amp;quot;0.00a&amp;quot; /&amp;gt;  Props    Prop Description Required     socket Socket that widget should use for updates Yes   name Name of widget.</description>
     </item>
     
@@ -96,8 +96,8 @@ Usage import SparklineWidget from &#39;../widgets/sparkline/widget&#39;;  &amp;l
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/widgets/text/</guid>
-      <description>The most basic widget available. The text widget displays text based on the job output e.g. displaying if you are deployed to green or blue if you do blue/green deployments.
-Usage import TextWidget from &#39;../widgets/text/widget&#39;;  &amp;lt;TextWidget socket={socket} name=&amp;quot;Deployment&amp;quot; title=&amp;quot;Green/Blue&amp;quot; /&amp;gt;  Props    Prop Description Required     socket Socket that widget should use for updates Yes   name Name of widget. Used to update the widget when a job completes Yes   title Title of widget.</description>
+      <description>The text widget is the most basic widget available. This widget displays text based on the output of a job, e.g. showing if you are deployed to green or blue if you do blue/green deployments.
+Usage import TextWidget from &#39;../widgets/text/widget&#39;;  &amp;lt;TextWidget socket={socket} name=&amp;quot;Deployment&amp;quot; title=&amp;quot;Green/Blue&amp;quot; /&amp;gt;  Props    Prop Description Required     socket Socket that widget should use for updates Yes   name Name of widget.</description>
     </item>
     
   </channel>
