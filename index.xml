@@ -71,6 +71,16 @@ Usage import PingWidget from &#39;../widgets/ping/widget&#39;;  &amp;lt;PingWidg
     </item>
     
     <item>
+      <title>Progress</title>
+      <link>/widgets/progress/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/widgets/progress/</guid>
+      <description>The progress widget allows you to show the progress of a target in form of a percentage. Calculate your progress from 0% to 100% and just pass it to the widget. The widget will animate from the last to current progress value.
+Usage import ProgressWidget from &#39;../widgets/progress/widget&#39;;  &amp;lt;ProgressWidget socket={socket} name=&amp;quot;DemoProgress&amp;quot; title=&amp;quot;Sales Target&amp;quot; /&amp;gt;  Props    Prop Description Required     socket Socket that widget should use for updates Yes   name Name of widget.</description>
+    </item>
+    
+    <item>
       <title>Setup</title>
       <link>/raspberry-pi/setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

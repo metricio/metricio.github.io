@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.30.2" />
 
-<title>Build Status :: Metricio - Dashboards for teams built with React and Node</title>
+<title>Progress :: Metricio - Dashboards for teams built with React and Node</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
 <link href="/css/font-awesome.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 
     
   </head>
-  <body data-url="/widgets/build-status/">
+  <body data-url="/widgets/progress/">
     
       <div id="headermain"></div>
 <nav id="sidebar" class="">
@@ -89,7 +89,7 @@
             <i class="fa fa-angle-down fa-lg category-icon"></i>
       </a>
         <ul>
-      <li data-nav-id="/widgets/build-status/" class="dd-item active">
+      <li data-nav-id="/widgets/build-status/" class="dd-item">
         <a href="/widgets/build-status/">
           <span>Build Status</span>
         </a>
@@ -104,7 +104,7 @@
           <span>Ping</span>
         </a>
     </li>
-      <li data-nav-id="/widgets/progress/" class="dd-item">
+      <li data-nav-id="/widgets/progress/" class="dd-item active">
         <a href="/widgets/progress/">
           <span>Progress</span>
         </a>
@@ -184,7 +184,7 @@
       
       
     <div id="top-github-link">
-      <a class="github-link" href="https://github.com/metricio/metricio-docs/blob/master/content/widgets/build-status.md" target="blank">
+      <a class="github-link" href="https://github.com/metricio/metricio-docs/blob/master/content/widgets/progress.md" target="blank">
         <i class="fa fa-code-fork"></i>
         Edit page
       </a>
@@ -204,7 +204,7 @@
 
 
 
- <a href='/'>Home</a> > <a href='/widgets/'>Widgets</a> > Build Status
+ <a href='/'>Home</a> > <a href='/widgets/'>Widgets</a> > Progress
 
  
 
@@ -243,7 +243,7 @@
 
 <div id="body-inner">
   
-    <h1>Build Status</h1>
+    <h1>Progress</h1>
   
 
 
@@ -253,19 +253,18 @@
     
     
 
-<p>The build status widget is designed to show the outcome of a build process. Usually as part of a continuous integration process. The widget has two design states <strong>success</strong> and <strong>fail</strong>. Success is <strong>green</strong> and fail is <strong>red</strong>. Any other state is <strong>blue</strong> e.g. pending or running.</p>
+<p>The progress widget allows you to show the progress of a target in form of a percentage. Calculate your progress from 0% to 100% and just pass it to the widget. The widget will animate from the last to current progress value.</p>
 
 <h4 id="usage">Usage</h4>
 
-<pre><code class="language-javascript">  import BuildStatusWidget from '../widgets/build-status/widget';
+<pre><code class="language-javascript">  import ProgressWidget from '../widgets/progress/widget';
 </code></pre>
 
-<pre><code class="language-html">  &lt;BuildStatusWidget
-    socket={socket}
-    name=&quot;DemoMaster&quot;
-    title=&quot;Build - Master&quot;
-    size=&quot;medium&quot;
-  /&gt;
+<pre><code class="language-html">    &lt;ProgressWidget
+      socket={socket}
+      name=&quot;DemoProgress&quot;
+      title=&quot;Sales Target&quot;
+    /&gt;
 </code></pre>
 
 <h4 id="props">Props</h4>
@@ -308,24 +307,15 @@
 
 <h4 id="data-stucture">Data Stucture</h4>
 
-<p>When building a job for the build-status widget, a single value should be used e.g.</p>
+<p>When building a job for the progress widget, a single value should be used e.g.</p>
 
 <pre><code class="language-javascript">// Successfull build
-data: { outcome: 'success' };
-
-// Failed build
-data: { outcome: 'fail' };
+data: { progress: 28 };
 </code></pre>
 
 <h4 id="example">Example</h4>
 
-<p><img src="https://res.cloudinary.com/metricio/image/upload/v1508768124/ci-success_mwot07.png" alt="" />
-<img src="https://res.cloudinary.com/metricio/image/upload/v1508768123/ci-fail_m7aodc.png" alt="" />
-<img src="https://res.cloudinary.com/metricio/image/upload/v1508768123/ci-pending_sshk5p.png" alt="" /></p>
-
-<div class="notices note" ><p>Sizes will vary as widgets are responsive to the viewport</p>
-</div>
-
+<p><img src="https://res.cloudinary.com/metricio/image/upload/v1510159204/progress_uqcsxa.png" alt="" /></p>
 
 
     
@@ -337,8 +327,8 @@ data: { outcome: 'fail' };
 </div>
 
 <div id="navigation">
-<a class="nav nav-prev" href="/widgets/" title="Widgets"> <i class="fa fa-chevron-left"></i></a>
-    <a class="nav nav-next" href="/widgets/number/" title="Number" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/widgets/ping/" title="Ping"> <i class="fa fa-chevron-left"></i></a>
+    <a class="nav nav-next" href="/widgets/sparkline/" title="Sparkline" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
 
 </section>
 <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
