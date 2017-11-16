@@ -54,7 +54,9 @@
 		<script type="text/javascript" src="/js/lunr.min.js"></script>
 		<script type="text/javascript" src="/js/auto-complete.js"></script>
 		<script type="text/javascript">
-		    var baseurl = "\/";
+        
+            var baseurl = "https:\/\/metricio.co\/";
+        
 		</script>
 		<script type="text/javascript" src="/js/search.js"></script>
   </div>
@@ -101,11 +103,6 @@
       <li data-nav-id="/widgets/ping/" class="dd-item">
         <a href="/widgets/ping/">
           <span>Ping</span>
-        </a>
-    </li>
-      <li data-nav-id="/widgets/progress/" class="dd-item">
-        <a href="/widgets/progress/">
-          <span>Progress</span>
         </a>
     </li>
       <li data-nav-id="/widgets/sparkline/" class="dd-item">
@@ -162,9 +159,9 @@
                 <li class="" role=""><h3>More</h3><a href="https://github.com/metricio/metricio" target="_blank" rel="noopener"><i class='fa fa-github'></i>&nbsp;&nbsp;View on Github</a></li>
         </section>
 
-		<hr />
-
-
+    <hr />
+    <li></li>
+    
     </ul>
 
  <section id="footer">
@@ -293,8 +290,8 @@ export const perform = async () =&gt; {
 <pre><code class="language-javascript">  import PingWidget from '../widgets/ping/widget';
 </code></pre>
 
-<pre><code class="language-html">&lt;Ping socket={socket} name=&quot;GooglePing&quot; title=&quot;Google&quot; /&gt;
-&lt;Ping socket={socket} name=&quot;RedditPing&quot; title=&quot;Reddit&quot; /&gt;
+<pre><code class="language-html">&lt;Ping name=&quot;GooglePing&quot; title=&quot;Google&quot; /&gt;
+&lt;Ping name=&quot;RedditPing&quot; title=&quot;Reddit&quot; /&gt;
 </code></pre>
 
 <p>Now everytime the above job completes successfully, widgets <strong>GooglePing</strong> and <strong>RedditPing</strong> will get updated with the ping response times.</p>

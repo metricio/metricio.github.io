@@ -54,7 +54,9 @@
 		<script type="text/javascript" src="/js/lunr.min.js"></script>
 		<script type="text/javascript" src="/js/auto-complete.js"></script>
 		<script type="text/javascript">
-		    var baseurl = "\/";
+        
+            var baseurl = "https:\/\/metricio.co\/";
+        
 		</script>
 		<script type="text/javascript" src="/js/search.js"></script>
   </div>
@@ -102,11 +104,6 @@
       <li data-nav-id="/widgets/ping/" class="dd-item active">
         <a href="/widgets/ping/">
           <span>Ping</span>
-        </a>
-    </li>
-      <li data-nav-id="/widgets/progress/" class="dd-item">
-        <a href="/widgets/progress/">
-          <span>Progress</span>
         </a>
     </li>
       <li data-nav-id="/widgets/sparkline/" class="dd-item">
@@ -162,9 +159,9 @@
                 <li class="" role=""><h3>More</h3><a href="https://github.com/metricio/metricio" target="_blank" rel="noopener"><i class='fa fa-github'></i>&nbsp;&nbsp;View on Github</a></li>
         </section>
 
-		<hr />
-
-
+    <hr />
+    <li></li>
+    
     </ul>
 
  <section id="footer">
@@ -261,7 +258,6 @@
 </code></pre>
 
 <pre><code class="language-html">  &lt;PingWidget
-    socket={socket}
     name=&quot;GooglePing&quot;
     title=&quot;Google&quot;
   /&gt;
@@ -279,12 +275,6 @@
 </thead>
 
 <tbody>
-<tr>
-<td align="left">socket</td>
-<td align="left">Socket that widget should use for updates</td>
-<td align="left">Yes</td>
-</tr>
-
 <tr>
 <td align="left">name</td>
 <td align="left">Name of widget. Used to update the widget when a job completes</td>
@@ -338,7 +328,7 @@
 
 <div id="navigation">
 <a class="nav nav-prev" href="/widgets/number/" title="Number"> <i class="fa fa-chevron-left"></i></a>
-    <a class="nav nav-next" href="/widgets/progress/" title="Progress" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="/widgets/sparkline/" title="Sparkline" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a></div>
 
 </section>
 <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">

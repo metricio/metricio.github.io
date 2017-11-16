@@ -1,148 +1,141 @@
 [
 {
-	"uri": "/getting-started/",
+	"uri": "https://metricio.co/getting-started/",
 	"title": "Getting started",
 	"tags": [],
 	"description": "",
-	"content": " Make sure you have met the requirements below before going through the installation.\nRequirements  Node v8.0.0+ Redis v2+  Install git clone https://github.com/metricio/metricio.git  npm i \u0026amp;\u0026amp; npm run start  Test npm run test  Coverage npm run coverage  Open your browser at http://localhost:3000\n"
+	"content": " Make sure you have met the requirements below before going through the installation.\nRequirements  Node v8.0.0+ Redis v2+  Install Download the latest release from Github, unzip it to your desired location and run the following inside that folder:\nnpm i \u0026amp;\u0026amp; npm run start  Open your browser at http://localhost:3000\nTest npm run test  Coverage npm run coverage  "
 },
 {
-	"uri": "/customisation/",
+	"uri": "https://metricio.co/customisation/",
 	"title": "Customisation",
 	"tags": [],
 	"description": "",
 	"content": "Everything you need can be found in src. Just open up each folder with your text editor and make your changes.\nIf you aren\u0026rsquo;t too familiar with React, Node.js or SCSS, you should still be able to find your way around. The current widgets, dashboards and jobs use very simple and easy to understand patterns. But if you get stuck, just raise an issue in the Github project.\n   Path Description     /src/dashboards/ Where all dashboards should be created. A default dashboard is already available as an example. See dashboards for more information.   /src/widgets/ Contains all currently available widgets. You can create your own or use the existing ones. See widgets for more information.   /src/jobs/ Contains all currently available jobs. You should create your own but feel free to use the existing ones as a template. See jobs for more information.    "
 },
 {
-	"uri": "/dashboards/",
+	"uri": "https://metricio.co/dashboards/",
 	"title": "Dashboards",
 	"tags": [],
 	"description": "",
-	"content": " You can add as many dashboards as you want, as long as they are inside the src/dashboards folder. A dashboard must have a .jsx extension. All new dashboards will be available after a server restart: http://localhost:3000/{dashboard-name-here}.\nExample Create new file:\ntouch src/dashboards/catz.jsx  Add the following to src/dashboards/catz.jsx:\n// You will almost alsmost need these imports import React from 'react'; import ReactDOM from 'react-dom'; import socketIOClient from 'socket.io-client'; // This is the default stylesheet feel free to add your own import '../styles/default.scss'; // Import the widget(s) you want to use import NumberWidget from '../widgets/number/widget'; // Make sure each client gets a socket connection. This will allow your // widget(s) to subscribe to data events from processed jobs const socket = socketIOClient(`http://${window.location.host}`); ReactDOM.render( \u0026lt;div className=\u0026quot;dashboard\u0026quot;\u0026gt; // Add your widgets and define your props. See widget docs for more info. \u0026lt;NumberWidget socket={socket} name=\u0026quot;MyCatWidget\u0026quot; title=\u0026quot;Catz\u0026quot; /\u0026gt; \u0026lt;/div\u0026gt;, document.getElementById('content'), );  Now you can run:\nnpm run start  and browse to http://localhost:3000/catz\nEt voila! You are now ready to make your first job and test the other widgets available.\nHead over to jobs to see how add a job for this example.\n"
+	"content": " You can add as many dashboards as you want, as long as they are inside the src/dashboards folder. A dashboard must have a .jsx extension. All new dashboards will be available after a server restart: http://localhost:3000/{dashboard-name-here}.\nExample Create new file:\ntouch src/dashboards/catz.jsx  Add the following to src/dashboards/catz.jsx:\nimport React from 'react'; import ReactDOM from 'react-dom'; // This is the default stylesheet feel free to add your own import '../styles/default.scss'; // Import the dashboard widget import Dashboard from '../widgets/dashboard'; // Import the widgets you want to show on your dashboard import NumberWidget from '../widgets/number/widget'; ReactDOM.render( \u0026lt;Dashboard\u0026gt; \u0026lt;NumberWidget name=\u0026quot;MyCatWidget\u0026quot; title=\u0026quot;Catz\u0026quot; /\u0026gt; \u0026lt;/Dashboard\u0026gt;, document.getElementById('content'), );  Now you can run:\nnpm run start  and browse to http://localhost:3000/catz\nEt voila! You are now ready to make your first job and test the other widgets available.\nHead over to jobs to see how add a job for this example.\n"
 },
 {
-	"uri": "/jobs/",
+	"uri": "https://metricio.co/jobs/",
 	"title": "Jobs",
 	"tags": [],
 	"description": "",
 	"content": " To create a new job you just need to add a new .js file to src/jobs directory.\nThe filename of a job is used to schedule, queue and process a job throughout the system. So please use common sense when naming them.\n Example Create a new job:\ntouch src/jobs/catzAPI.js  Add the following to src/jobs/catzAPI.js:\n// Here we use request to collect fake data from an API, but // you can use whatever you need import request from 'request-promise-native'; // Define our options for request const options = { uri: 'https://jsonplaceholder.typicode.com/users', json: true, }; // Define and export when or how often you want to the job to run. See: https://crontab.guru export const interval = '* * * * *'; // Define and export the function to perform export const perform = async () =\u0026gt; { // Await for our request, in this care a promise, to resolve const response = await request(options); // Return an array of values. You can update many widgets from one job if you want return [ { // Name of widget to update. Assigned on dashboard creation. target: 'MyCatWidget', data: { // Value to be passed to widget state value: response.length, }, }, ]; };  When you next start the server, the above job will run every minute and try and update the MyCatWidget widget.\nEach widget has a specific payload. The example above is a job to be consumed by the number widget. So only has a value data entry. It\u0026rsquo;s important to note that if you are using a custom widget then the whole data object is passed to the widgets state.\n "
 },
 {
-	"uri": "/widgets/",
+	"uri": "https://metricio.co/widgets/",
 	"title": "Widgets",
 	"tags": [],
 	"description": "",
-	"content": "  Build Status Number Ping Progress Sparkline Text  "
+	"content": "  Build Status Number Ping Sparkline Text  "
 },
 {
-	"uri": "/storage/",
+	"uri": "https://metricio.co/storage/",
 	"title": "Storage",
 	"tags": [],
 	"description": "",
 	"content": "If you have a specific Redis configuration then you can set the following environment variables, otherwise defaults will be used:\n Host: REDIS_SERVER_HOST Port: REDIS_SERVER_PORT Password: REDIS_SERVER_PASSWORD  "
 },
 {
-	"uri": "/raspberry-pi/",
+	"uri": "https://metricio.co/raspberry-pi/",
 	"title": "Raspberry Pi",
 	"tags": [],
 	"description": "",
 	"content": "This framework was created to enable many dashboards to be powered by one machine. Once metricio is up and running on a machine, you can connect it to your local network and use it as a server. Just use the local IP address of the server machine and browse to that with as many clients as you need. Preferably with a modern browser.\n Setup  "
 },
 {
-	"uri": "/",
+	"uri": "https://metricio.co/",
 	"title": "Home",
 	"tags": [],
 	"description": "",
 	"content": "FAST \u0026 SIMPLE DASHBOARDS FOR ALL YOUR METRICS   \nMetricio (🔊) is a dashboard framework that helps you display metrics and monitor systems and APIs.\nSimple to get started and quick to create build screens for all your teams.\nMetricio has a similar design and architecture to Dashing, which used to be my \u0026ldquo;goto\u0026rdquo; framework for dashboards. Unfortunately, Dashing is no longer maintained. However, if you have a preference to writing CoffeeScript and Ruby then that framework is still awesome!\nMetricio allows you to:\n Build widgets with React components Create jobs with Node.js and async/await Support for multiple dashboards CRON like scheduling with node-scheduler Caching handled with Redis Event-based communication with socket.io Number formatting with Numeral  The UI aims to use as little resource as possible. Enabling your dashboards to run without crashing for prolonged lengths of time on even the most neglected Raspberry Pi.\n"
 },
 {
-	"uri": "/_header/",
+	"uri": "https://metricio.co/_header/",
 	"title": "_Header",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "/widgets/build-status/",
+	"uri": "https://metricio.co/widgets/build-status/",
 	"title": "Build Status",
 	"tags": [],
 	"description": "",
-	"content": " The build status widget is designed to show the outcome of a build process. Usually as part of a continuous integration process. The widget has two design states success and fail. Success is green and fail is red. Any other state is blue e.g. pending or running.\nUsage import BuildStatusWidget from '../widgets/build-status/widget';  \u0026lt;BuildStatusWidget socket={socket} name=\u0026quot;DemoMaster\u0026quot; title=\u0026quot;Build - Master\u0026quot; size=\u0026quot;medium\u0026quot; /\u0026gt;  Props    Prop Description Required     socket Socket that widget should use for updates Yes   name Name of widget. Used to update the widget when a job completes Yes   title Title of widget. Usually displayed above the outcome value Yes   size Size of the widget: small (default) or medium can be used Optional    Data Stucture When building a job for the build-status widget, a single value should be used e.g.\n// Successfull build data: { outcome: 'success' }; // Failed build data: { outcome: 'fail' };  Example Sizes will vary as widgets are responsive to the viewport\n "
+	"content": " The build status widget is designed to show the outcome of a build process. Usually as part of a continuous integration process. The widget has two design states success and fail. Success is green and fail is red. Any other state is blue e.g. pending or running.\nUsage import BuildStatusWidget from '../widgets/build-status/widget';  \u0026lt;BuildStatusWidget name=\u0026quot;DemoMaster\u0026quot; title=\u0026quot;Build - Master\u0026quot; size=\u0026quot;medium\u0026quot; /\u0026gt;  Props    Prop Description Required     name Name of widget. Used to update the widget when a job completes Yes   title Title of widget. Usually displayed above the outcome value Yes   size Size of the widget: small (default) or medium can be used Optional    Data Stucture When building a job for the build-status widget, a single value should be used e.g.\n// Successfull build data: { outcome: 'success' }; // Failed build data: { outcome: 'fail' };  Example Sizes will vary as widgets are responsive to the viewport\n "
 },
 {
-	"uri": "/categories/",
+	"uri": "https://metricio.co/categories/",
 	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "/recipes/circleci/",
+	"uri": "https://metricio.co/recipes/circleci/",
 	"title": "CircleCI",
 	"tags": [],
 	"description": "",
-	"content": " Below is a basic example of a job to get your build status from CircleCI and then how to integrate the build status widget into your dashboard using the result from the job.\nJob import request from 'request-promise-native'; // Helper method to fetch a status for a branch function getBranch(repo, branch, limit = 10) { const githubUser = 'GITHUB_ORG_OR_USER'; const endpoint = 'https://circleci.com/api/v1.1/project/github'; const options = { uri: `${endpoint}/${githubUser}/${repo}/tree/${branch}`, qs: { 'circle-token': 'SECRET_CIRCLE_CI_TOKEN', offset: 0, limit, }, headers: { 'User-Agent': 'Metrician - CircleCI', }, json: true, }; return request(options); } // Define our interval e.g. https://crontab.guru export const interval = '*/2 * * * *'; // Define our jobs function export const perform = async () =\u0026gt; { // Resolve promise for develop const develop = await getBranch('YOUR_REPO`', 'develop'); // Resolve promise for master const master = await getBranch('YOUR_REPO', 'master'); return [ { target: 'BuildDevelop', data: { outcome: develop[0].outcome === null ? 'pending' : develop[0].outcome, }, }, { target: 'BuildMaster', data: { outcome: master[0].outcome === null ? 'pending' : master[0].outcome, }, }, ]; };  Dashboard import BuildStatusWidget from '../widgets/build-status/widget';  \u0026lt;BuildStatusWidget socket={socket} name=\u0026quot;BuildDevelop\u0026quot; title=\u0026quot;Build - Develop\u0026quot; size=\u0026quot;medium\u0026quot; /\u0026gt; \u0026lt;BuildStatusWidget socket={socket} name=\u0026quot;BuildMaster\u0026quot; title=\u0026quot;Build - Master\u0026quot; size=\u0026quot;medium\u0026quot; /\u0026gt;  Now everytime the above job completes successfully, widgets BuildMaster and BuildDevelop will get updated with the latest build outcome.\n"
+	"content": " Below is a basic example of a job to get your build status from CircleCI and then how to integrate the build status widget into your dashboard using the result from the job.\nJob import request from 'request-promise-native'; // Helper method to fetch a status for a branch function getBranch(repo, branch, limit = 10) { const githubUser = 'GITHUB_ORG_OR_USER'; const endpoint = 'https://circleci.com/api/v1.1/project/github'; const options = { uri: `${endpoint}/${githubUser}/${repo}/tree/${branch}`, qs: { 'circle-token': 'SECRET_CIRCLE_CI_TOKEN', offset: 0, limit, }, headers: { 'User-Agent': 'Metricio - CircleCI', }, json: true, }; return request(options); } // Define our interval e.g. https://crontab.guru export const interval = '*/2 * * * *'; // Define our jobs function export const perform = async () =\u0026gt; { // Resolve promise for develop const develop = await getBranch('YOUR_REPO`', 'develop'); // Resolve promise for master const master = await getBranch('YOUR_REPO', 'master'); return [ { target: 'BuildDevelop', data: { outcome: develop[0].outcome === null ? 'pending' : develop[0].outcome, }, }, { target: 'BuildMaster', data: { outcome: master[0].outcome === null ? 'pending' : master[0].outcome, }, }, ]; };  Dashboard import BuildStatusWidget from '../widgets/build-status/widget';  \u0026lt;BuildStatusWidget name=\u0026quot;BuildDevelop\u0026quot; title=\u0026quot;Build - Develop\u0026quot; size=\u0026quot;medium\u0026quot; /\u0026gt; \u0026lt;BuildStatusWidget name=\u0026quot;BuildMaster\u0026quot; title=\u0026quot;Build - Master\u0026quot; size=\u0026quot;medium\u0026quot; /\u0026gt;  Now everytime the above job completes successfully, widgets BuildMaster and BuildDevelop will get updated with the latest build outcome.\n"
 },
 {
-	"uri": "/widgets/number/",
+	"uri": "https://metricio.co/widgets/number/",
 	"title": "Number",
 	"tags": [],
 	"description": "",
-	"content": " The number widget can be found at src/widgets/number/widget.jsx. Because the number widget is the most commonly used widget, the background colours are randomised to keep the dashboards unique. So don\u0026rsquo;t be surprised if you see them change colour.\nUsage import NumberWidget from '../widgets/number/widget';  \u0026lt;NumberWidget socket={socket} name=\u0026quot;MyCatWidget\u0026quot; title=\u0026quot;Catz Conversion\u0026quot; metric=\u0026quot;%\u0026quot; format=\u0026quot;0.0a\u0026quot; /\u0026gt;  Props    Prop Description Required     socket Socket that widget should use for updates Yes   name Name of widget. Used to update the widget when a job completes Yes   title Title of widget. Usually displayed above the metric value Yes   metric Metric to use for value passed to widget e.g. % Optional   format How to format the widget value. See Numeral docs. Optional   size Size of the widget: small (default) or medium can be used Optional    Data Stucture When building a job for a number widget, a single value should be used e.g.\ndata: { value: 24 };  Example "
+	"content": " The number widget can be found at src/widgets/number/widget.jsx. Because the number widget is the most commonly used widget, the background colours are randomised to keep the dashboards unique. So don\u0026rsquo;t be surprised if you see them change colour.\nUsage import NumberWidget from '../widgets/number/widget';  \u0026lt;NumberWidget name=\u0026quot;MyCatWidget\u0026quot; title=\u0026quot;Catz Conversion\u0026quot; metric=\u0026quot;%\u0026quot; /\u0026gt;  Props    Prop Description Required     name Name of widget. Used to update the widget when a job completes Yes   title Title of widget. Usually displayed above the metric value Yes   metric Metric to use for value passed to widget e.g. % Optional   format How to format the widget value. See Numeral docs. Optional   size Size of the widget: small (default) or medium can be used Optional    Data Stucture When building a job for a number widget, a single value should be used e.g.\ndata: { value: 1.4 };  Example "
 },
 {
-	"uri": "/recipes/ping/",
+	"uri": "https://metricio.co/recipes/ping/",
 	"title": "Ping",
 	"tags": [],
 	"description": "",
-	"content": " Below is a basic example of a job that gets a ping response time from a URL or endpoint and also how to integrate the ping widget into your dashboard using the result from the job.\nJob import request from 'request-promise-native'; const options = { resolveWithFullResponse: true, time: true, timeout: 5000, headers: { 'User-Agent': 'Metricio - Ping Example', }, }; export const interval = '* * * * *'; export const perform = async () =\u0026gt; { const google = await request(Object.assign(options, { uri: 'https://www.google.com' })); const reddit = await request(Object.assign(options, { uri: 'https://www.reddit.com/' })); return [ { target: 'GooglePing', data: { status: google.statusCode, time: google.elapsedTime, }, }, { target: 'RedditPing', data: { status: reddit.statusCode, time: reddit.elapsedTime, }, }, ]; };  Dashboard import PingWidget from '../widgets/ping/widget';  \u0026lt;Ping socket={socket} name=\u0026quot;GooglePing\u0026quot; title=\u0026quot;Google\u0026quot; /\u0026gt; \u0026lt;Ping socket={socket} name=\u0026quot;RedditPing\u0026quot; title=\u0026quot;Reddit\u0026quot; /\u0026gt;  Now everytime the above job completes successfully, widgets GooglePing and RedditPing will get updated with the ping response times.\n"
+	"content": " Below is a basic example of a job that gets a ping response time from a URL or endpoint and also how to integrate the ping widget into your dashboard using the result from the job.\nJob import request from 'request-promise-native'; const options = { resolveWithFullResponse: true, time: true, timeout: 5000, headers: { 'User-Agent': 'Metricio - Ping Example', }, }; export const interval = '* * * * *'; export const perform = async () =\u0026gt; { const google = await request(Object.assign(options, { uri: 'https://www.google.com' })); const reddit = await request(Object.assign(options, { uri: 'https://www.reddit.com/' })); return [ { target: 'GooglePing', data: { status: google.statusCode, time: google.elapsedTime, }, }, { target: 'RedditPing', data: { status: reddit.statusCode, time: reddit.elapsedTime, }, }, ]; };  Dashboard import PingWidget from '../widgets/ping/widget';  \u0026lt;Ping name=\u0026quot;GooglePing\u0026quot; title=\u0026quot;Google\u0026quot; /\u0026gt; \u0026lt;Ping name=\u0026quot;RedditPing\u0026quot; title=\u0026quot;Reddit\u0026quot; /\u0026gt;  Now everytime the above job completes successfully, widgets GooglePing and RedditPing will get updated with the ping response times.\n"
 },
 {
-	"uri": "/widgets/ping/",
+	"uri": "https://metricio.co/widgets/ping/",
 	"title": "Ping",
 	"tags": [],
 	"description": "",
-	"content": " The ping widget is used to display the outcome of a request to an API endpoint or website and report whether the response was a 200 and how long it took to get that response. If the response was 200, then the widget will remain orange. However, if the response is anything other than 200 the widget will be red.\nUsage import PingWidget from '../widgets/ping/widget';  \u0026lt;PingWidget socket={socket} name=\u0026quot;GooglePing\u0026quot; title=\u0026quot;Google\u0026quot; /\u0026gt;  Props    Prop Description Required     socket Socket that widget should use for updates Yes   name Name of widget. Used to update the widget when a job completes Yes   title Title of widget. Usually displayed above the metric value Yes   size Size of the widget: small (default) or medium can be used Optional    Data Stucture When building a job for a ping widget, a status value and and time value should be sent e.g.\n// Successful data: { status: 200, // HTTP Status Code time: 726, // Request Time (ms) } // Failed data: { status: 500, time: 0, }  Example "
+	"content": " The ping widget is used to display the outcome of a request to an API endpoint or website and report whether the response was a 200 and how long it took to get that response. If the response was 200, then the widget will remain orange. However, if the response is anything other than 200 the widget will be red.\nUsage import PingWidget from '../widgets/ping/widget';  \u0026lt;PingWidget name=\u0026quot;GooglePing\u0026quot; title=\u0026quot;Google\u0026quot; /\u0026gt;  Props    Prop Description Required     name Name of widget. Used to update the widget when a job completes Yes   title Title of widget. Usually displayed above the metric value Yes   size Size of the widget: small (default) or medium can be used Optional    Data Stucture When building a job for a ping widget, a status value and and time value should be sent e.g.\n// Successful data: { status: 200, // HTTP Status Code time: 726, // Request Time (ms) } // Failed data: { status: 500, time: 0, }  Example "
 },
 {
-	"uri": "/widgets/progress/",
-	"title": "Progress",
-	"tags": [],
-	"description": "",
-	"content": " The progress widget allows you to show the progress of a target in form of a percentage. Calculate your progress from 0% to 100% and just pass it to the widget. The widget will animate from the last to current progress value.\nUsage import ProgressWidget from '../widgets/progress/widget';  \u0026lt;ProgressWidget socket={socket} name=\u0026quot;DemoProgress\u0026quot; title=\u0026quot;Sales Target\u0026quot; /\u0026gt;  Props    Prop Description Required     socket Socket that widget should use for updates Yes   name Name of widget. Used to update the widget when a job completes Yes   title Title of widget. Usually displayed above the outcome value Yes   size Size of the widget: small (default) or medium can be used Optional    Data Stucture When building a job for the progress widget, a single value should be used e.g.\n// Successfull build data: { progress: 28 };  Example "
-},
-{
-	"uri": "/recipes/",
+	"uri": "https://metricio.co/recipes/",
 	"title": "Recipes",
 	"tags": [],
 	"description": "",
 	"content": "  CircleCI Ping  "
 },
 {
-	"uri": "/raspberry-pi/setup/",
+	"uri": "https://metricio.co/raspberry-pi/setup/",
 	"title": "Setup",
 	"tags": [],
 	"description": "",
 	"content": " Step 1: Install Raspbian Use the official docs to help you install Raspbian. But it\u0026rsquo;s more than likely that your Pi already has a boot image on the SD card that came with it. So, power it up and see if you get something like below:\nStep 2: Configure Raspbian Once booted up and on the desktop of Raspbian, we need to set the Locale, Timezone, Keyboard and enable SSH.\n click on the Raspberry Pi menu icon Select Preferences, Raspberry Pi Configuration In the Raspberry Pi Configuration, on the Interfaces tab Next to SSH, select enable, click OK In Raspberry Pi Configuration, on the Localisation tab, click Set Locale Select the Language (eg en), Country (eg CA) and leave Character Set at UTF-8, click OK In Raspberry Pi Configuration, on the Localisation tab, click Set Timezone Select the Area (eg Canada), Location (eg Eastern), click OK In Raspberry Pi Configuration, on the Localisation tab, click Set Keyboard Select the Country, Variant and click OK In Raspberry Pi Configuration, click OK, and reboot  Step 2: Updates In the terminal run the following commands, each one after the other has finished:\n sudo apt-get update -y sudo apt-get upgrade -y sudo apt-get dist-upgrade -y sudo apt-get autoremove -y  Step 3: Dashboard Dependencies In the terminal run the following commands, each one after the other has finished:\n sudo apt-get install -y chromium-browser sudo apt-get install -y ttf-mscorefonts-installer sudo apt-get install -y unclutter sudo apt-get install -y x11-xserver-utils  This will install everything you need to get a fullscreen dashboard running\nStep 4: Boot Setup We need to configure the PI to boot straight to the dashboard. You will need the IP of the server running the dashboard.\nsudo vi .config/lxsession/LXDE-pi/autostart\nComment out the following line: (Put a # before it)\n@xscreensaver -no-splash  Add the following to the bottom of the file: (replace http://192.168.0.1 with your server IP)\n@/usr/bin/chromium-browser --incognito --start-maximized --kiosk http://192.168.0.1 @unclutter @xset s off @xset s noblank @xset -dpms  Step 5: SSH Open the terminal and find the Pi\u0026rsquo;s IP address: ifconfig. Make sure you are connected to your network first. Note down the IP.\nConnect to your PI from another machine: (replace 192.168.0.10 with actual IP)\nssh pi@192.168.0.10\nMost of the time the user is set to pi and the default password is raspberry. You will probably want to change this. You can do that with passwd.\nStep 4: Reboot You should now be able to reboot the PI and watch it boot straight to a browser, go fullscreen and load your dashboard from your server. You can do the above for as many PI\u0026rsquo;s as you like.\n"
 },
 {
-	"uri": "/widgets/sparkline/",
+	"uri": "https://metricio.co/widgets/sparkline/",
 	"title": "Sparkline",
 	"tags": [],
 	"description": "",
-	"content": " The sparkline widget is to help quickly visualise the history of a metric. The widget plots all supplied values on a sparkline line chart as best as it can. The last value provided will be assumed as the most up to date value to display.\nUsage import SparklineWidget from '../widgets/sparkline/widget';  \u0026lt;SparklineWidget socket={socket} name=\u0026quot;DemoUsers\u0026quot; title=\u0026quot;Users\u0026quot; format=\u0026quot;0.00a\u0026quot; /\u0026gt;  Props    Prop Description Required     socket Socket that widget should use for updates Yes   name Name of widget. Used to update the widget when a job completes Yes   title Title of widget. Usually displayed above the metric value Yes   format How to format the widget value. See Numeral docs. Optional    Data Stucture When building a job for the sparkline widget, the value entry should be an Array of multiple data points for the sparkline graph to plot. The last value provided is assumed to be the latest value:\ndata: { value: [ 1144,1425,1223,1267,1267,1180,1122,1399, 1271,1431,1353,1111,1225,1340,1098,1012, 1223,1109,1133,1371,1050,1463,1324,1161, 1191,1294,1066,1041,1445,1172 ] }  Example "
+	"content": " The sparkline widget is to help quickly visualise the history of a metric. The widget plots all supplied values on a sparkline line chart as best as it can. The last value provided will be assumed as the most up to date value to display.\nUsage import SparklineWidget from '../widgets/sparkline/widget';  \u0026lt;SparklineWidget name=\u0026quot;DemoUsers\u0026quot; title=\u0026quot;Users\u0026quot; format=\u0026quot;0.00a\u0026quot; /\u0026gt;  Props    Prop Description Required     name Name of widget. Used to update the widget when a job completes Yes   title Title of widget. Usually displayed above the metric value Yes   format How to format the widget value. See Numeral docs. Optional    Data Stucture When building a job for the sparkline widget, the value entry should be an Array of multiple data points for the sparkline graph to plot. The last value provided is assumed to be the latest value:\ndata: { value: [ 1144,1425,1223,1267,1267,1180,1122,1399, 1271,1431,1353,1111,1225,1340,1098,1012, 1223,1109,1133,1371,1050,1463,1324,1161, 1191,1294,1066,1041,1445,1172 ] }  Example "
 },
 {
-	"uri": "/tags/",
+	"uri": "https://metricio.co/tags/",
 	"title": "Tags",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "/widgets/text/",
+	"uri": "https://metricio.co/widgets/text/",
 	"title": "Text",
 	"tags": [],
 	"description": "",
-	"content": " The text widget is the most basic widget available. This widget displays text based on the output of a job, e.g. showing if you are deployed to green or blue if you do blue/green deployments.\nUsage import TextWidget from '../widgets/text/widget';  \u0026lt;TextWidget socket={socket} name=\u0026quot;Deployment\u0026quot; title=\u0026quot;Green/Blue\u0026quot; /\u0026gt;  Props    Prop Description Required     socket Socket that widget should use for updates Yes   name Name of widget. Used to update the widget when a job completes Yes   title Title of widget. Usually displayed above the metric value Yes   size Size of the widget: small (default) or medium can be used Optional    Data Stucture When building a job for a text widget, a single value should be provided e.g.\ndata: { value: 'green' };  Example "
+	"content": " The text widget is the most basic widget available. This widget displays text based on the output of a job, e.g. showing if you are deployed to green or blue if you do blue/green deployments.\nUsage import TextWidget from '../widgets/text/widget';  \u0026lt;TextWidget name=\u0026quot;Deployment\u0026quot; title=\u0026quot;Green/Blue\u0026quot; /\u0026gt;  Props    Prop Description Required     name Name of widget. Used to update the widget when a job completes Yes   title Title of widget. Usually displayed above the metric value Yes   size Size of the widget: small (default) or medium can be used Optional    Data Stucture When building a job for a text widget, a single value should be provided e.g.\ndata: { value: 'green' };  Example "
 }]

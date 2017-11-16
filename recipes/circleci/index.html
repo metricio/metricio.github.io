@@ -54,7 +54,9 @@
 		<script type="text/javascript" src="/js/lunr.min.js"></script>
 		<script type="text/javascript" src="/js/auto-complete.js"></script>
 		<script type="text/javascript">
-		    var baseurl = "\/";
+        
+            var baseurl = "https:\/\/metricio.co\/";
+        
 		</script>
 		<script type="text/javascript" src="/js/search.js"></script>
   </div>
@@ -101,11 +103,6 @@
       <li data-nav-id="/widgets/ping/" class="dd-item">
         <a href="/widgets/ping/">
           <span>Ping</span>
-        </a>
-    </li>
-      <li data-nav-id="/widgets/progress/" class="dd-item">
-        <a href="/widgets/progress/">
-          <span>Progress</span>
         </a>
     </li>
       <li data-nav-id="/widgets/sparkline/" class="dd-item">
@@ -162,9 +159,9 @@
                 <li class="" role=""><h3>More</h3><a href="https://github.com/metricio/metricio" target="_blank" rel="noopener"><i class='fa fa-github'></i>&nbsp;&nbsp;View on Github</a></li>
         </section>
 
-		<hr />
-
-
+    <hr />
+    <li></li>
+    
     </ul>
 
  <section id="footer">
@@ -266,7 +263,7 @@ function getBranch(repo, branch, limit = 10) {
       limit,
     },
     headers: {
-      'User-Agent': 'Metrician - CircleCI',
+      'User-Agent': 'Metricio - CircleCI',
     },
     json: true,
   };
@@ -307,13 +304,13 @@ export const perform = async () =&gt; {
 <pre><code class="language-javascript">  import BuildStatusWidget from '../widgets/build-status/widget';
 </code></pre>
 
-<pre><code class="language-html">&lt;BuildStatusWidget socket={socket}
+<pre><code class="language-html">&lt;BuildStatusWidget
   name=&quot;BuildDevelop&quot;
   title=&quot;Build - Develop&quot;
   size=&quot;medium&quot;
 /&gt;
 
-&lt;BuildStatusWidget socket={socket}
+&lt;BuildStatusWidget
   name=&quot;BuildMaster&quot;
   title=&quot;Build - Master&quot;
   size=&quot;medium&quot;

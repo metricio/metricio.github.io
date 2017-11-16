@@ -54,7 +54,9 @@
 		<script type="text/javascript" src="/js/lunr.min.js"></script>
 		<script type="text/javascript" src="/js/auto-complete.js"></script>
 		<script type="text/javascript">
-		    var baseurl = "\/";
+        
+            var baseurl = "https:\/\/metricio.co\/";
+        
 		</script>
 		<script type="text/javascript" src="/js/search.js"></script>
   </div>
@@ -101,11 +103,6 @@
       <li data-nav-id="/widgets/ping/" class="dd-item">
         <a href="/widgets/ping/">
           <span>Ping</span>
-        </a>
-    </li>
-      <li data-nav-id="/widgets/progress/" class="dd-item">
-        <a href="/widgets/progress/">
-          <span>Progress</span>
         </a>
     </li>
       <li data-nav-id="/widgets/sparkline/" class="dd-item">
@@ -161,9 +158,9 @@
                 <li class="" role=""><h3>More</h3><a href="https://github.com/metricio/metricio" target="_blank" rel="noopener"><i class='fa fa-github'></i>&nbsp;&nbsp;View on Github</a></li>
         </section>
 
-		<hr />
-
-
+    <hr />
+    <li></li>
+    
     </ul>
 
  <section id="footer">
@@ -256,26 +253,22 @@
 
 <p>Add the following to <code>src/dashboards/catz.jsx</code>:</p>
 
-<pre><code class="language-javascript">// You will almost alsmost need these imports
-import React from 'react';
+<pre><code class="language-javascript">import React from 'react';
 import ReactDOM from 'react-dom';
-import socketIOClient from 'socket.io-client';
 
 // This is the default stylesheet feel free to add your own
 import '../styles/default.scss';
 
-// Import the widget(s) you want to use
+// Import the dashboard widget
+import Dashboard from '../widgets/dashboard';
+
+// Import the widgets you want to show on your dashboard
 import NumberWidget from '../widgets/number/widget';
 
-// Make sure each client gets a socket connection. This will allow your
-// widget(s) to subscribe to data events from processed jobs
-const socket = socketIOClient(`http://${window.location.host}`);
-
 ReactDOM.render(
-  &lt;div className=&quot;dashboard&quot;&gt;
-      // Add your widgets and define your props. See widget docs for more info.
-    &lt;NumberWidget socket={socket} name=&quot;MyCatWidget&quot; title=&quot;Catz&quot; /&gt;
-  &lt;/div&gt;,
+  &lt;Dashboard&gt;
+    &lt;NumberWidget name=&quot;MyCatWidget&quot; title=&quot;Catz&quot; /&gt;
+  &lt;/Dashboard&gt;,
   document.getElementById('content'),
 );
 </code></pre>
