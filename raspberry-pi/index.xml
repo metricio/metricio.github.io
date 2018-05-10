@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Raspberry Pi on Metricio - Dashboards for teams built with React and Node</title>
+    <link>https://metricio.co/raspberry-pi/</link>
+    <description>Recent content in Raspberry Pi on Metricio - Dashboards for teams built with React and Node</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://metricio.co/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setup</title>
+      <link>https://metricio.co/raspberry-pi/setup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://metricio.co/raspberry-pi/setup/</guid>
+      <description>Step 1: Install Raspbian Use the official docs to help you install Raspbian. But it&amp;rsquo;s more than likely that your Pi already has a boot image on the SD card that came with it. So, power it up and see if you get something like below:
+Step 2: Configure Raspbian Once booted up and on the desktop of Raspbian, we need to set the Locale, Timezone, Keyboard and enable SSH.</description>
+    </item>
+    
+  </channel>
+</rss>

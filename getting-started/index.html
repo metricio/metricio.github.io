@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="generator" content="Hugo 0.30.2" />
+<meta name="generator" content="Hugo 0.40.3" />
 
 <title>Getting started :: Metricio - Dashboards for teams built with React and Node</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
@@ -54,9 +54,7 @@
 		<script type="text/javascript" src="/js/lunr.min.js"></script>
 		<script type="text/javascript" src="/js/auto-complete.js"></script>
 		<script type="text/javascript">
-        
-            var baseurl = "https:\/\/metricio.co\/";
-        
+		    var baseurl = "https:\/\/metricio.co\/";
 		</script>
 		<script type="text/javascript" src="/js/search.js"></script>
   </div>
@@ -158,9 +156,9 @@
                 <li class="" role=""><h3>More</h3><a href="https://github.com/metricio/metricio" target="_blank" rel="noopener"><i class='fa fa-github'></i>&nbsp;&nbsp;View on Github</a></li>
         </section>
 
-    <hr />
-    <li></li>
-    
+		<hr />
+
+
     </ul>
 
  <section id="footer">
@@ -213,9 +211,10 @@
 <li>
 <ul>
 <li><a href="#requirements">Requirements</a></li>
-<li><a href="#install">Install</a></li>
+<li><a href="#install-start">Install &amp; Start</a></li>
 <li><a href="#test">Test</a></li>
-<li><a href="#coverage">Coverage</a></li>
+<li><a href="#lint">Lint</a></li>
+<li><a href="#start-production">Start - Production</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -248,23 +247,34 @@
 <li>Redis v2+</li>
 </ul>
 
-<h2 id="install">Install</h2>
+<h2 id="install-start">Install &amp; Start</h2>
 
 <p>Download the latest release from <a href="https://github.com/metricio/metricio/releases">Github</a>, unzip it to your desired location and run the following inside that folder:</p>
 
 <pre><code>npm i &amp;&amp; npm run start
 </code></pre>
 
-<p>Open your browser at <code>http://localhost:3000</code></p>
+<p>Open your browser at <code>http://localhost:3000</code> and you should be up and running.</p>
 
 <h2 id="test">Test</h2>
+
+<p>Run the current test suite.</p>
 
 <pre><code>npm run test
 </code></pre>
 
-<h2 id="coverage">Coverage</h2>
+<h2 id="lint">Lint</h2>
 
-<pre><code>npm run coverage
+<p>Run eslint over the code base.</p>
+
+<pre><code>npm run lint
+</code></pre>
+
+<h2 id="start-production">Start - Production</h2>
+
+<p>Start metrico in a compressed and more performant mode.</p>
+
+<pre><code>npm run production
 </code></pre>
 
 
